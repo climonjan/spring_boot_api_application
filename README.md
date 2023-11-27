@@ -1,4 +1,4 @@
-# BD_API
+# spring_boot_api
 
 ## Описание проекта
 
