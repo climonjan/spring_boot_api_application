@@ -1,4 +1,4 @@
-# spring_boot_api
+# spring_boot_api_application
 
 ## Описание проекта
 
