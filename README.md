@@ -103,7 +103,7 @@ DELETE: http://localhost:8080/positions/delete-all
 ### Логи
 1. **Получить все логи**
 ```
-GET: http://localhost:8080/positions/25/
+GET: http://localhost:8080/logs/
 ```
 2. **Получить все логи по документу**
 ```
