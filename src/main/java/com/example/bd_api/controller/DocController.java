@@ -1,6 +1,7 @@
 package com.example.bd_api.controller;
 
 import com.example.bd_api.exceptions.DocNotFound;
+import com.example.bd_api.exceptions.InvalidNum;
 import com.example.bd_api.exceptions.ListIsEmpty;
 import com.example.bd_api.exceptions.NumberAlreadyExistException;
 import com.example.bd_api.entity.DocEntity;
@@ -24,8 +25,10 @@ public class DocController {
         try {
             docService.createDoc(doc);
             return ResponseEntity.ok("document created!");
-        } catch (NumberAlreadyExistException ex) {
-            logService.createLog(doc, ex);
+        } catch (NumberAlreadyExistException | InvalidNum ex) {
+            if (ex instanceof NumberAlreadyExistException) {
+                logService.createLog(doc, ex);
+            }
             return ResponseEntity.badRequest().body(ex.getMessage());
         } catch (Exception ex) {
             return ResponseEntity.badRequest().body("unknown error!");

@@ -20,7 +20,7 @@ public class DocService {
     private DocRepo docRepo;
     public DocEntity createDoc (DocEntity doc) throws InvalidNum, NumberAlreadyExistException {
         if (doc.getNumber() < 1) {
-            throw new InvalidNum("invalid documnet number!");
+            throw new InvalidNum("invalid document number!");
         }
         if (docRepo.findByNumber(doc.getNumber()) != null) {
             throw new NumberAlreadyExistException("document with this number already exists!");

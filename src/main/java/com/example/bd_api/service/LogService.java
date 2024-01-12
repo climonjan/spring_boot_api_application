@@ -23,7 +23,7 @@ public class LogService {
     @Autowired
     private DocRepo docRepo;
 
-    public LogEntity createLog(DocEntity doc, NumberAlreadyExistException ex) {
+    public LogEntity createLog(DocEntity doc, Exception ex) {
         LogEntity log = new LogEntity();
         log.setDoc(docRepo.findByNumber(doc.getNumber()));
         log.setErr_msg(ex.getMessage());
@@ -36,7 +36,6 @@ public class LogService {
             throw new ListIsEmpty("log_list is empty!");
         }
         return logs.stream().map(Log::toModel).collect(Collectors.toList());
-//        return logs;
     }
 
     public List<Log> getLogByDoc (Integer doc_num) throws DocNotFound, LogNotFound {
@@ -50,7 +49,6 @@ public class LogService {
             throw new LogNotFound("logs not found!");
         }
         return logs.stream().map(Log::toModel).collect(Collectors.toList());
-//        return logs;
     }
 
     public String deleteAllLogs() throws ListIsEmpty {
